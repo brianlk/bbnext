@@ -4,7 +4,9 @@
 int func1(int x);
 void func2();
 void func3();
-void func4(int *x);
+void test_pass_ptr(int *x);
+void test_loop();
+void test_vector();
 
 using namespace std;
 
@@ -18,15 +20,13 @@ class Memory {
 };
 
 int main() {
-	vector<int> v1 = {1, 2};
-	for (const int &i : v1) {
-		printf("%d\n", i);
-	}
 	func2();
 	func3();
 	int x = 100;
-	func4(&x);
+	test_pass_ptr(&x);
 	printf("x = %d", x);
+	test_loop();
+	test_vector();
 	return 0;
 }
 
@@ -50,8 +50,25 @@ void func3() {
 	printf("a is %d\n", a);
 }
 
-void func4(int *x) {
+void test_pass_ptr(int *x) {
 	int *x_ptr = x;
 	printf("%p", x_ptr);
 	*x_ptr = 200;
+}
+
+void test_loop() {
+	int int_a[10] = {1,2,3};
+	int_a[9] = 1000;
+	for (int i=0; i<12; i++) {
+		printf("%d\n", int_a[i]);
+	}
+	int ss = sizeof(int_a) / sizeof(int);
+	printf("Size of array %d\n", ss);
+}
+
+void test_vector() {
+	vector<int> v1 = {1, 2};
+	for (const int &i : v1) {
+		printf("%d\n", i);
+	}
 }
