@@ -1,7 +1,8 @@
 #include <cstdio>
 #include <vector>
 
-int func1 (int x);
+int func1(int x);
+void func2();
 
 using namespace std;
 
@@ -19,12 +20,16 @@ int main() {
 	for (const int &i : v1) {
 		printf("%d\n", i);
 	}
-	Memory mem_oj;
-	mem_oj.check_memory();
+	func2();
 	return 0;
 }
 
-int func1 (int x) {
+int func1(int x) {
 
 	return x;
+}
+
+void func2() {
+	Memory mem_oj;
+	mem_oj.check_memory();
 }
