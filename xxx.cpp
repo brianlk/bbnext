@@ -1,5 +1,8 @@
 #include <cstdio>
 #include <vector>
+#include <cstring>
+#include <string>
+#include <typeinfo>
 
 int func1(int x);
 void func2();
@@ -7,6 +10,10 @@ void func3();
 void test_pass_ptr(int *x);
 void test_loop();
 void test_vector();
+void test_type();
+void test_input();
+void convert_ascii();
+void array_pointer();
 
 using namespace std;
 
@@ -27,6 +34,9 @@ int main() {
 	printf("x = %d", x);
 	test_loop();
 	test_vector();
+    test_type();
+    convert_ascii();
+    array_pointer();
 	return 0;
 }
 
@@ -57,13 +67,12 @@ void test_pass_ptr(int *x) {
 }
 
 void test_loop() {
-	int int_a[10] = {1,2,3};
+	int int_a[100] {1,2,3};
 	int_a[9] = 1000;
-	for (int i=0; i<12; i++) {
-		printf("%d\n", int_a[i]);
-	}
-	int ss = sizeof(int_a) / sizeof(int);
-	printf("Size of array %d\n", ss);
+//	for (;;) {
+//	}
+//  int ss = sizeof(int_a) / sizeof(int);
+//  printf("Size of array %d\n", ss);
 }
 
 void test_vector() {
@@ -71,4 +80,25 @@ void test_vector() {
 	for (const int &i : v1) {
 		printf("%d\n", i);
 	}
+}
+
+void test_type(){
+    char *x;
+//    printf("%s", typeid(x).name());
+//    printf("%p", x);
+}
+
+void convert_ascii(){
+    char x = 'a';
+    int y = (int)x;
+    printf("%d\n", y);
+}
+
+void array_pointer(){
+    char x[] = "abcdef";
+    char *p_x = x;
+    printf("%c\n", *p_x);
+    printf("%p\n", x);
+    char *next_x = p_x + 1;
+    printf("%c\n", *next_x);
 }
