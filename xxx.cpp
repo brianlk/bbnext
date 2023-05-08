@@ -14,6 +14,7 @@ void test_type();
 void test_input();
 void convert_ascii();
 void array_pointer();
+void test_ref();
 
 using namespace std;
 
@@ -37,6 +38,7 @@ int main() {
     test_type();
     convert_ascii();
     array_pointer();
+    test_ref();
 	return 0;
 }
 
@@ -101,4 +103,21 @@ void array_pointer(){
     printf("%p\n", x);
     char *next_x = p_x + 1;
     printf("%c\n", *next_x);
+}
+
+void pointer_array(){
+    char *x[3];
+    char a[2] = "1";
+    char b[2] = "2";
+    char c[2] = "3";
+    x[0] = a;
+    x[1] = b;
+    x[2] = c;
+}
+
+void test_ref() {
+    int x = 1;
+    int &y = x;
+    printf("%d %p\n", x, &x);
+    printf("%d %p\n", y, &y);
 }
