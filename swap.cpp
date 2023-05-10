@@ -28,7 +28,8 @@ void swap_once(vector<int> &vc, int index) {
 
 int main() {
 	vector<int> v1 = {3,8,9,7,6}; // {6,7,9,8,3}
-	// show_v(v1);
+	show_v(v1);
+	cout << "========================" << endl;
 	swap_once(v1, 0);
 	// show_v(v1);
 	cout << "========================" << endl;
