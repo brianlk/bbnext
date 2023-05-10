@@ -15,6 +15,7 @@ void test_input();
 void convert_ascii();
 void array_pointer();
 void test_ref();
+void test_system_cmd();
 
 using namespace std;
 
@@ -39,6 +40,7 @@ int main() {
     convert_ascii();
     array_pointer();
     test_ref();
+    test_system_cmd();
 	return 0;
 }
 
@@ -121,3 +123,17 @@ void test_ref() {
     printf("%d %p\n", x, &x);
     printf("%d %p\n", y, &y);
 }
+
+void test_deftype() {
+    struct {
+        int id;
+        char x;
+    } z;
+    z.id =1 ;
+    z.x = 'a';
+}
+
+void test_system_cmd() {
+    system("ls -l");
+}
+
