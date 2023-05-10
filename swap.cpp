@@ -6,6 +6,14 @@ using namespace std;
 void show_v(vector<int> v1);
 void swap_once(vector<int> &vc, int index);
 
+
+void show_v(vector<int> v1) {
+	int len = v1.size();
+	for (int i=0; i<len; i++) {
+		cout << v1[i] <<endl;
+	}
+}
+
 void swap_once(vector<int> &vc, int index) {
 	int temp;
 	int len = vc.size();
@@ -16,13 +24,6 @@ void swap_once(vector<int> &vc, int index) {
 	}
 	vc[index] = temp;
 	show_v(vc);
-}
-
-void show_v(vector<int> v1) {
-	int len = v1.size();
-	for (int i=0; i<len; i++) {
-		cout << v1[i] <<endl;
-	}
 }
 
 int main() {
