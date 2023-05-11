@@ -13,7 +13,7 @@ int main() {
         }
     }
     for (int i=0;i<25;i++) {
-        putchar(msg[i]);
+        printf("%d => %c\n", msg[i], msg[i]);
     }
     putchar('\n');
     return 0;
