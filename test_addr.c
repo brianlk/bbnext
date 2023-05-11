@@ -6,7 +6,10 @@ int main() {
 	int age = 100;
 	int* age_p;
 	age_p = &age;
-	printf("%p", age_p);
+	// print age addreess
+	printf("age address: %p\n", age_p); 
+	// print pointer of age address
+	printf("pointer of age address: %p\n", &age_p);
 	(*age_p) = 101;
 	printf("%d", age);
 
