@@ -10,5 +10,16 @@ int main() {
 	char c1[] = "i am ok";
 	char* c2 = c1;
 	c2[0] = 'X';
-	printf("%s", c1);
+	printf("%s\n", c1);
+
+	char* xxx = "I am okay";
+	printf("%s\n", xxx);
+	xxx = "you are okay";
+	printf("%s\n", xxx);
+	for (int j=0; j<=11; j++){ 
+		printf("%c\n", xxx[j]);
+	}
+	// print string length
+	printf("%zu\n", strlen(xxx));
+		
 }
