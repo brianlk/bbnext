@@ -6,17 +6,20 @@ void read(FILE* fptr);
 
 int main() {
 	FILE* fptr;
-	// write(fptr);
-	read(fptr);
+	write(fptr);
+	//read(fptr);
 }
 
 void write(FILE* fptr) {
 	fptr = fopen("/tmp/x.file", "w");
+  char xxx[20] = "i am okay";
+  char xx2[20] = "2 i am okay";
+
 	if (!fptr) {
 		printf("Error: failed to open file.\n");
 		exit (1);
 	}
-	fprintf(fptr, "i am ok.");
+	fprintf(fptr,"{\"data\":[{\"a\":\"%s\"},{\"b\":\"%s\"}]}", xxx, xx2); 
 	fclose(fptr);
 }
 
