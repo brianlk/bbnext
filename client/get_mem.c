@@ -8,6 +8,7 @@
 #define MEMINFO "/proc/meminfo"
 #define BUFFERSIZE 64
 
+
 const char *metrics[] = {
 	"MemTo",
 	"MemFr",
@@ -17,6 +18,7 @@ const char *metrics[] = {
 	"Cache"
 
 };
+
 
 bool match_regex(char *str) {
 	regex_t regex;
@@ -45,6 +47,7 @@ char* extact_values(char *str) {
 	}
 }
 
+
 bool extract_items(FILE *fp) {
 	char buffer[BUFFERSIZE];
 
@@ -65,6 +68,7 @@ bool extract_items(FILE *fp) {
 	}
 	return true;
 }
+
 
 int main() {
 	FILE *fp;
