@@ -19,16 +19,17 @@ const char *metrics[] = {
   "Cache"
 };
 
-bool print_json(char *metrics_key, char *metrics_value) {
+bool print_json(char *metrics_key, char *metrics_value, int array_size) {
   printf("%s => %s\n", metrics_key, metrics_value);
   StructToJSON *ptr;
-  ptr = (StructToJSON*) malloc(10 * sizeof(StructToJSON));
+  ptr = (StructToJSON*) malloc(array_size * sizeof(StructToJSON));
   if (ptr == NULL) {
     printf("Memory not allocated.\n");
     exit(EXIT_FAILURE);
   }
   ptr->key = metrics_key;
   ptr->value = metrics_value;
+  free(ptr);
 }
 
 
@@ -76,7 +77,7 @@ bool extract_items(FILE *fp) {
     for (int i=0; i<array_size; i++) {
       if (strcmp(target, metrics[i]) == 0){
         // extract the value of each memory items
-        print_json(buffer, extact_values(buffer));
+        print_json(buffer, extact_values(buffer), array_size);
       }
     }
   }
