@@ -20,7 +20,7 @@ const char *metrics[] = {
 };
 
 bool print_json(char *metrics_key, char *metrics_value, int array_size) {
-  printf("%s => %s\n", metrics_key, metrics_value);
+  // printf("%s => %s\n", metrics_key, metrics_value);
   StructToJSON *ptr;
   ptr = (StructToJSON*) malloc(array_size * sizeof(StructToJSON));
   if (ptr == NULL) {
@@ -29,6 +29,7 @@ bool print_json(char *metrics_key, char *metrics_value, int array_size) {
   }
   ptr->key = metrics_key;
   ptr->value = metrics_value;
+  printf("\"%s\":\"%s\",", metrics_key, metrics_value);
   free(ptr);
 }
 
@@ -50,6 +51,7 @@ bool match_regex(char *str) {
 
 
 char* extact_values(char *str) {
+  // Split the string into tokens
   char *delimiter = " ";
   char *token;
 
