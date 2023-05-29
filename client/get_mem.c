@@ -9,7 +9,12 @@
 
 const char *metrics[] = {
 	"MemTo",
-	"MemFr"
+	"MemFr",
+	"MemAv",
+	"SwapT",
+	"SwapF",
+	"Cache"
+
 };	
 
 bool extract_lines(FILE *fp) {
@@ -20,9 +25,10 @@ bool extract_lines(FILE *fp) {
 		fgets(buffer, BUFFERSIZE, fp);
 		if (buffer == NULL)
 			break;
-		// grep the related string
+		// loop the metrics array and get the metrics
 		char *target = strndup(buffer, 5);
-		for (int i=0; i<2; i++) {
+		int array_size = sizeof(metrics)/sizeof(metrics[0]);
+		for (int i=0; i<array_size; i++) {
 			if (strcmp(target, metrics[i]) == 0){
 				printf("%s\n", target);
 			}
