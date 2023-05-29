@@ -1,11 +1,13 @@
 #include "stdio.h"
 #include "stdlib.h"
+#include "string.h"
 
 #define MEMINFO "/proc/meminfo"
+#define BUFFERSIZE 64
 
 int main() {
 	FILE *fp;
-	int ch;
+	char buffer[BUFFERSIZE];
 
 	// open "/proc/meminfo"
 	fp = fopen(MEMINFO, "r");
@@ -15,11 +17,15 @@ int main() {
 	}
 	// Read the file until eof
 	while (!feof(fp)) {
-		ch = fgetc(fp);
-		if (ch == '\n') {
+		fgets(buffer, BUFFERSIZE, fp);
+		if (buffer == NULL)
+			break;
+		// grep the related string
+		char *target = strndup(buffer, 5);	
+		if (strcmp(target, "MemTo") == 0){
+			printf("%s", target);
 			break;
 		}
-		putchar(ch);
 	}
 	fclose(fp);
 
