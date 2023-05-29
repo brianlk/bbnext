@@ -1,3 +1,11 @@
+/*
+* get_mem.c
+* Program for get linux memory metrics
+* by Brian Leung
+* created 2023/05/29
+*/
+
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
@@ -18,6 +26,7 @@ const char *metrics[] = {
   "SwapF",
   "Cache"
 };
+
 
 bool print_json(char *metrics_key, char *metrics_value, int array_size) {
   // printf("%s => %s\n", metrics_key, metrics_value);
