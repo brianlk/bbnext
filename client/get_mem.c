@@ -18,6 +18,10 @@ const char *metrics[] = {
   "Cache"
 };
 
+bool print_json(char *key, char *value) {
+  printf("%s => %s\n", key, value);
+}
+
 
 bool match_regex(char *str) {
   regex_t regex;
@@ -63,7 +67,7 @@ bool extract_items(FILE *fp) {
     for (int i=0; i<array_size; i++) {
       if (strcmp(target, metrics[i]) == 0){
         // extract the value of each memory items
-        printf("%s, %s\n", buffer, extact_values(buffer));
+        print_json(buffer, extact_values(buffer));
       }
     }
   }
