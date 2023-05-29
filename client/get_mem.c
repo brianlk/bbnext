@@ -7,11 +7,14 @@
 #define MEMINFO "/proc/meminfo"
 #define BUFFERSIZE 64
 
-
+const char *metrics[] = {
+	"MemTo",
+	"MemFr"
+};	
 
 bool extract_lines(FILE *fp) {
 	char buffer[BUFFERSIZE];
-	
+
 	// Read the file until eof
 	while (!feof(fp)) {
 		fgets(buffer, BUFFERSIZE, fp);
@@ -19,11 +22,10 @@ bool extract_lines(FILE *fp) {
 			break;
 		// grep the related string
 		char *target = strndup(buffer, 5);
-		if (strcmp(target, "MemTo") == 0){
-			printf("%s\n", target);
-		}
-		if (strcmp(target, "MemFr") == 0){
-			printf("%s\n", target);
+		for (int i=0; i<2; i++) {
+			if (strcmp(target, metrics[i]) == 0){
+				printf("%s\n", target);
+			}
 		}
 	}
 	return true;
