@@ -40,7 +40,9 @@ int main() {
 		puts("Error: Can't open the file!");
 		exit(1);
 	}
-	extract_lines(fp);
+	if ( extract_lines(fp) ) {
+		printf("Extract info ok\n");
+	}
 	fclose(fp);
 
 	return(0);
