@@ -3,6 +3,7 @@
 #include "string.h"
 #include "stdbool.h"
 #include "regex.h"
+#include "struct_to_json.h"
 
 
 #define MEMINFO "/proc/meminfo"
@@ -18,8 +19,16 @@ const char *metrics[] = {
   "Cache"
 };
 
-bool print_json(char *key, char *value) {
-  printf("%s => %s\n", key, value);
+bool print_json(char *metrics_key, char *metrics_value) {
+  printf("%s => %s\n", metrics_key, metrics_value);
+  StructToJSON *ptr;
+  ptr = (StructToJSON*) malloc(10 * sizeof(StructToJSON));
+  if (ptr == NULL) {
+    printf("Memory not allocated.\n");
+    exit(EXIT_FAILURE);
+  }
+  ptr->key = metrics_key;
+  ptr->value = metrics_value;
 }
 
 
