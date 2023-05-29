@@ -23,8 +23,10 @@ int main() {
 		// grep the related string
 		char *target = strndup(buffer, 5);	
 		if (strcmp(target, "MemTo") == 0){
-			printf("%s", target);
-			break;
+			printf("%s\n", target);
+		}
+		if (strcmp(target, "MemFr") == 0){
+			printf("%s\n", target);
 		}
 	}
 	fclose(fp);
