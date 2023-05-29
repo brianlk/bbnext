@@ -1,4 +1,6 @@
 // struct_to_json.h
+#ifndef STRUCT_TO_JSON_H
+#define STRUCT_TO_JSON_H
 
 struct StructToJSON {
   char *key;
@@ -6,3 +8,5 @@ struct StructToJSON {
 };
 
 typedef struct StructToJSON StructToJSON;
+
+#endif
