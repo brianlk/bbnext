@@ -21,9 +21,11 @@ const char *metrics[] = {
 
 bool match_regex(char *str) {
   regex_t regex;
-  int reg_comp = regcomp(&regex, "[0-9]", 0);
+  const char *pattern = "[0-9]";
+  int reg_comp = regcomp(&regex, pattern, 0);
   if (reg_comp != 0) {
     printf("Error:");
+    exit(EXIT_FAILURE);
   }
   int reg_exec = regexec(&regex, str, 0, NULL, 0);
   if (reg_exec == 0) {
@@ -76,12 +78,13 @@ int main() {
   fp = fopen(MEMINFO, "r");
   if (fp == NULL) {
     puts("Error: Can't open the file!");
-    exit(1);
+    exit(EXIT_FAILURE);
   }
-  if ( extract_items(fp) ) {
-    printf("Extract info ok\n");
+  if ( !extract_items(fp) ) {
+    printf("Extract failed!");
+    exit(EXIT_FAILURE);
   }
   fclose(fp);
 
-  return(0);
+  return EXIT_SUCCESS;
 }
