@@ -1,3 +1,11 @@
+/*
+* struct_to_json.c
+* Program for get linux memory metrics
+* by Brian Leung
+* created 2023/05/30
+*/
+
+
 #include "stdio.h"
 #include "struct_to_json.h"
 
