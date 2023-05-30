@@ -30,9 +30,8 @@ const char *metrics[] = {
 // TODO
 bool print_json(char *metrics_key, char *metrics_value, int array_size) {
   StructToJSON s1;
-  StructToJSON_constructor(&s1, 10, metrics_key, metrics_value, array_size);
-  int num = StructToJSON_method(&s1);
-  printf("%d", num);
+  StructToJSON_constructor(&s1, metrics_key, metrics_value, array_size);
+  StructToJSON_print_map(&s1);
   // printf("%s => %s\n", metrics_key, metrics_value);
   // StructToJSON *ptr;
   // ptr = (StructToJSON*) malloc(array_size * sizeof(StructToJSON));
