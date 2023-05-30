@@ -18,3 +18,8 @@ void StructToJSON_constructor(StructToJSON * const self, int x, char *key, char 
   printf("bbb %s\n", self->key);
   printf("ccc %s\n", self->value);
 }
+
+int StructToJSON_method(StructToJSON * const self) {
+  self->x = self->x * 100;
+  return self->x;
+}

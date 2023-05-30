@@ -16,7 +16,7 @@ struct StructToJSON {
 };
 typedef struct StructToJSON StructToJSON;
 
-
 void StructToJSON_constructor(StructToJSON * const self, int x, char *key, char *value, int array_size);
+int StructToJSON_method(StructToJSON * const self);
 
 #endif
