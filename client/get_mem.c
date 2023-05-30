@@ -67,12 +67,6 @@ char* extact_values(char *str) {
   // Split the string into tokens
   char *delimiter = " ";
   char *token;
-  static int count = 0;
-
-  count++;
-  printf("---%d\n", count);
-
-
 
   token = strtok(str, delimiter);
   if (match_regex(token, "([a-zA-Z]+):")) {
@@ -80,12 +74,10 @@ char* extact_values(char *str) {
   }
   while (token != NULL) {
     if (match_regex(token, "[0-9]+")) {
-      printf("%s", token);
-      return token;
+      printf("%s\n", token);
     }
     token = strtok(NULL, delimiter);
   }
-
 }
 
 
@@ -106,7 +98,6 @@ bool get_defined_items(FILE *fp) {
         // print_json(buffer, extact_values(buffer), array_size);
         // printf("%s", buffer);
         extact_values(buffer);
-        puts("===============================");
       }
     }
   }
