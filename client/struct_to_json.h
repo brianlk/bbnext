@@ -9,4 +9,6 @@ struct StructToJSON {
 
 typedef struct StructToJSON StructToJSON;
 
+void xxx(StructToJSON *STJ_ptr);
+
 #endif

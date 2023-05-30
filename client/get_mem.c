@@ -39,6 +39,7 @@ bool print_json(char *metrics_key, char *metrics_value, int array_size) {
   ptr->key = metrics_key;
   ptr->value = metrics_value;
   printf("\"%s\":\"%s\",", metrics_key, metrics_value);
+  xxx(ptr);
   free(ptr);
 }
 
