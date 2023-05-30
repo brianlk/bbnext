@@ -29,18 +29,20 @@ const char *metrics[] = {
 
 // TODO
 bool print_json(char *metrics_key, char *metrics_value, int array_size) {
+  StructToJSON s1;
+  StructToJSON_constructor(&s1, 10, metrics_key, metrics_value, array_size);
   // printf("%s => %s\n", metrics_key, metrics_value);
-  StructToJSON *ptr;
-  ptr = (StructToJSON*) malloc(array_size * sizeof(StructToJSON));
-  if (ptr == NULL) {
-    printf("Memory not allocated.\n");
-    exit(EXIT_FAILURE);
-  }
-  ptr->key = metrics_key;
-  ptr->value = metrics_value;
-  printf("\"%s\":\"%s\",", metrics_key, metrics_value);
-  xxx(ptr);
-  free(ptr);
+  // StructToJSON *ptr;
+  // ptr = (StructToJSON*) malloc(array_size * sizeof(StructToJSON));
+  // if (ptr == NULL) {
+  //   printf("Memory not allocated.\n");
+  //   exit(EXIT_FAILURE);
+  // }
+  // ptr->key = metrics_key;
+  // ptr->value = metrics_value;
+  // printf("\"%s\":\"%s\",", metrics_key, metrics_value);
+  // xxx(ptr);
+  // free(ptr);
 }
 
 

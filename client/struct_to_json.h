@@ -9,16 +9,14 @@
 #ifndef STRUCT_TO_JSON_H
 #define STRUCT_TO_JSON_H
 
-
 struct StructToJSON {
   char *key;
   char *value;
+  int x;
 };
-
-
 typedef struct StructToJSON StructToJSON;
 
 
-void xxx(StructToJSON *STJ_ptr);
+void StructToJSON_constructor(StructToJSON * const self, int x, char *key, char *value, int array_size);
 
 #endif

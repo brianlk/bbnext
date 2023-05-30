@@ -10,6 +10,11 @@
 #include "struct_to_json.h"
 
 
-void xxx(StructToJSON *STJ_ptr) {
-  puts("i am in struct to json.c");
+void StructToJSON_constructor(StructToJSON * const self, int x, char *key, char *value, int array_size) {
+  self->x = x;
+  self->key = key;
+  self->value = value;
+  printf("aaa %d\n", self->x);
+  printf("bbb %s\n", self->key);
+  printf("ccc %s\n", self->value);
 }
