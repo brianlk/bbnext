@@ -27,14 +27,13 @@ const char *defined_metrics[] = {
 
 int counter = 0;
 
-StructToJSON *sj_queue;
+StructToJSON *sj_queue[10];
 
-// Copy the object into the queue
+// add the pointer into the array
 bool process_key_and_value(char *key_and_value) {
 
-  StructToJSON s1;
-  StructToJSON_constructor(&s1, key_and_value);
-  memcpy((sj_queue +counter), &s1, sizeof(struct StructToJSON));
+  sj_queue[counter] = malloc(sizeof(struct StructToJSON));
+  StructToJSON_constructor(sj_queue[counter], key_and_value);
   counter++;
 }
 
@@ -98,7 +97,7 @@ bool get_defined_items(FILE *fp) {
 
 int main() {
   FILE *fp;
-  sj_queue = (StructToJSON*) malloc(10 * sizeof(struct StructToJSON));
+  // sj_queue = (StructToJSON*) malloc(10 * sizeof(struct StructToJSON));
   // open "/proc/meminfo"
   fp = fopen(MEMINFO, "r");
   if (fp == NULL) {
@@ -111,11 +110,11 @@ int main() {
   }
   fclose(fp);
 
-
-  // print the objects in queue
-  for (int i=0; i < counter; i++) {
-    printf("%s => %s\n", (sj_queue + i)->key, (sj_queue + i)->value);
+  for (int i=0; i<counter; i++) {
+    printf("%s => %s\n", (sj_queue[i])->key, (sj_queue[i])->value);
   }
-  free(sj_queue);
+  // print the objects in queue
+
+  // free(sj_queue);
   return EXIT_SUCCESS;
 }
