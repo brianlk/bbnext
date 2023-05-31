@@ -11,6 +11,9 @@
 #include "stdlib.h"
 #include "struct_to_json.h"
 
+// object counter
+int counter = 0;
+
 void StructToJSON_constructor(StructToJSON * const self, char *key_and_value) {
   
   char *key = strtok(key_and_value, ":");

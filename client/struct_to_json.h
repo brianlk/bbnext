@@ -9,6 +9,9 @@
 #ifndef STRUCT_TO_JSON_H
 #define STRUCT_TO_JSON_H
 
+// object counter
+extern int counter;
+
 struct StructToJSON {
   char key[100];
   char value[100];
