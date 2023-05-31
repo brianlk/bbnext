@@ -5,7 +5,6 @@
 * created 2023/05/29
 */
 
-
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
@@ -13,10 +12,8 @@
 #include "regex.h"
 #include "struct_to_json.h"
 
-
 #define MEMINFO "/proc/meminfo"
 #define BUFFERSIZE 64
-
 
 const char *defined_metrics[] = {
   "MemTo",
@@ -27,30 +24,11 @@ const char *defined_metrics[] = {
   "Cache"
 };
 
-// TODO
-// bool print_json(char *metrics_key, char *metrics_value, int array_size) {
-//   StructToJSON s1;
-//   StructToJSON_constructor(&s1, metrics_key, metrics_value, array_size);
-//   StructToJSON_print_map(&s1);
-  // printf("%s => %s\n", metrics_key, metrics_value);
-  // StructToJSON *ptr;
-  // ptr = (StructToJSON*) malloc(array_size * sizeof(StructToJSON));
-  // if (ptr == NULL) {
-  //   printf("Memory not allocated.\n");
-  //   exit(EXIT_FAILURE);
-  // }
-  // ptr->key = metrics_key;
-  // ptr->value = metrics_value;
-  // printf("\"%s\":\"%s\",", metrics_key, metrics_value);
-  // xxx(ptr);
-  // free(ptr);
-// }
 bool process_key_and_value(char *key_and_value) {
 
   StructToJSON s1;
   StructToJSON_constructor(&s1, key_and_value);
 }
-
 
 bool match_regex(char *str, const char * pattern) {
   regex_t regex;
@@ -66,7 +44,6 @@ bool match_regex(char *str, const char * pattern) {
   }
   return false;
 } 
-
 
 char* extact_key_value(char *str) {
   // Split the string into tokens
@@ -90,7 +67,6 @@ char* extact_key_value(char *str) {
   }
 }
 
-
 bool get_defined_items(FILE *fp) {
   char buffer[BUFFERSIZE];
 
@@ -113,7 +89,6 @@ bool get_defined_items(FILE *fp) {
   }
   return true;
 }
-
 
 int main() {
   FILE *fp;
