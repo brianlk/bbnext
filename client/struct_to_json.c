@@ -11,7 +11,6 @@
 #include "stdlib.h"
 #include "struct_to_json.h"
 
-
 void StructToJSON_constructor(StructToJSON * const self, char *key_and_value) {
   
   char *key = strtok(key_and_value, ":");
@@ -19,11 +18,14 @@ void StructToJSON_constructor(StructToJSON * const self, char *key_and_value) {
   char *value = strtok(NULL, ":");
   self->value = value;
 
-  self->queue = (StructToJSON*) malloc(10 * sizeof(StructToJSON));
+  // initialize the object and trigger counter
+  StructToJSON_counter(self);
 
   printf("%s => %s\n", self->key, self->value);
 }
 
-void StructToJSON_print_map(StructToJSON * const self) {
-  printf("%s => %s\n", self->key, self->value);
+void StructToJSON_counter(StructToJSON * const self) {
+  static int count = 0;
+  count += 1;
+  printf("%d", count);
 }

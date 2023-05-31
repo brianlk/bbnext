@@ -81,8 +81,6 @@ bool get_defined_items(FILE *fp) {
     for (int i=0; i<array_size; i++) {
       if (strcmp(buffer_substr, defined_metrics[i]) == 0){
         // extract the value of each memory items
-        // print_json(buffer, extact_values(buffer), array_size);
-        // printf("%s", buffer);
         extact_key_value(buffer);
       }
     }
