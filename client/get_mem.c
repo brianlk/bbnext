@@ -29,11 +29,12 @@ int counter = 0;
 
 StructToJSON *sj_queue[10];
 
-// add the pointer into the array
-bool process_key_and_value(char *key_and_value) {
 
+bool process_key_and_value(char *key_and_value) {
+  // assign the address to array of pointer
   sj_queue[counter] = malloc(sizeof(struct StructToJSON));
   StructToJSON_constructor(sj_queue[counter], key_and_value);
+  // increment the counter. Next round, work on the next item in sj_queue 
   counter++;
 }
 
