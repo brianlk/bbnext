@@ -116,6 +116,6 @@ int main() {
   for (int i=0; i < counter; i++) {
     printf("%s => %s\n", (sj_queue + i)->key, (sj_queue + i)->value);
   }
-
+  free(sj_queue);
   return EXIT_SUCCESS;
 }
