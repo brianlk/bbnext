@@ -12,6 +12,7 @@
 struct StructToJSON {
   char *key;
   char *value;
+  struct StructToJSON *queue;
 };
 typedef struct StructToJSON StructToJSON;
 

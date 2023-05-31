@@ -8,14 +8,18 @@
 
 #include "stdio.h"
 #include "string.h"
+#include "stdlib.h"
 #include "struct_to_json.h"
 
 
 void StructToJSON_constructor(StructToJSON * const self, char *key_and_value) {
+  
   char *key = strtok(key_and_value, ":");
   self->key = key;
   char *value = strtok(NULL, ":");
   self->value = value;
+
+  self->queue = (StructToJSON*) malloc(10 * sizeof(StructToJSON));
 
   printf("%s => %s\n", self->key, self->value);
 }
