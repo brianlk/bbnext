@@ -45,6 +45,9 @@ const char *defined_metrics[] = {
   // xxx(ptr);
   // free(ptr);
 // }
+bool process_key_and_value(char *key_and_value) {
+  printf("==== %s\n", key_and_value);
+}
 
 
 bool match_regex(char *str, const char * pattern) {
@@ -63,18 +66,23 @@ bool match_regex(char *str, const char * pattern) {
 } 
 
 
-char* extact_values(char *str) {
+char* extact_key_value(char *str) {
   // Split the string into tokens
   char *delimiter = " ";
   char *token;
 
   token = strtok(str, delimiter);
+  char *temp;
+  // match the metrics key
   if (match_regex(token, "([a-zA-Z]+):")) {
-    printf("%s", token);
+    temp = token;
   }
   while (token != NULL) {
+    // match the metrics value
     if (match_regex(token, "[0-9]+")) {
-      printf("%s\n", token);
+      char *key_and_value = strcat(temp, token);
+      // process key:value
+      process_key_and_value(key_and_value);
     }
     token = strtok(NULL, delimiter);
   }
@@ -97,7 +105,7 @@ bool get_defined_items(FILE *fp) {
         // extract the value of each memory items
         // print_json(buffer, extact_values(buffer), array_size);
         // printf("%s", buffer);
-        extact_values(buffer);
+        extact_key_value(buffer);
       }
     }
   }
