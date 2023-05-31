@@ -10,12 +10,13 @@
 #define STRUCT_TO_JSON_H
 
 struct StructToJSON {
-  char *key;
-  char *value;
+  char key[100];
+  char value[100];
 };
 typedef struct StructToJSON StructToJSON;
 
 void StructToJSON_constructor(StructToJSON * const self, char *key_and_value);
-void StructToJSON_counter(StructToJSON * const self);
+
+
 
 #endif

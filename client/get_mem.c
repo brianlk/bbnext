@@ -24,10 +24,18 @@ const char *defined_metrics[] = {
   "Cache"
 };
 
+
+int counter = 0;
+
+StructToJSON *sj_queue;
+
+// Copy the object into the queue
 bool process_key_and_value(char *key_and_value) {
 
   StructToJSON s1;
   StructToJSON_constructor(&s1, key_and_value);
+  memcpy((sj_queue +counter), &s1, sizeof(struct StructToJSON));
+  counter++;
 }
 
 bool match_regex(char *str, const char * pattern) {
@@ -90,7 +98,7 @@ bool get_defined_items(FILE *fp) {
 
 int main() {
   FILE *fp;
-
+  sj_queue = (StructToJSON*) malloc(10 * sizeof(struct StructToJSON));
   // open "/proc/meminfo"
   fp = fopen(MEMINFO, "r");
   if (fp == NULL) {
@@ -102,6 +110,12 @@ int main() {
     exit(EXIT_FAILURE);
   }
   fclose(fp);
+
+
+  // print the objects in queue
+  for (int i=0; i < counter; i++) {
+    printf("%s => %s\n", (sj_queue + i)->key, (sj_queue + i)->value);
+  }
 
   return EXIT_SUCCESS;
 }

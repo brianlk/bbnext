@@ -14,18 +14,9 @@
 void StructToJSON_constructor(StructToJSON * const self, char *key_and_value) {
   
   char *key = strtok(key_and_value, ":");
-  self->key = key;
+  strcpy(self->key, key);
   char *value = strtok(NULL, ":");
-  self->value = value;
+  strcpy(self->value, value);
 
-  // initialize the object and trigger counter
-  StructToJSON_counter(self);
-
-  printf("%s => %s\n", self->key, self->value);
 }
 
-void StructToJSON_counter(StructToJSON * const self) {
-  static int count = 0;
-  count += 1;
-  printf("%d", count);
-}
