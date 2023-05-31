@@ -12,11 +12,10 @@
 struct StructToJSON {
   char *key;
   char *value;
-  int x;
 };
 typedef struct StructToJSON StructToJSON;
 
-void StructToJSON_constructor(StructToJSON * const self, char *key, char *value, int array_size);
+void StructToJSON_constructor(StructToJSON * const self, char *key_and_value);
 void StructToJSON_print_map(StructToJSON * const self);
 
 #endif

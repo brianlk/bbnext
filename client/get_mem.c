@@ -46,7 +46,9 @@ const char *defined_metrics[] = {
   // free(ptr);
 // }
 bool process_key_and_value(char *key_and_value) {
-  printf("==== %s\n", key_and_value);
+
+  StructToJSON s1;
+  StructToJSON_constructor(&s1, key_and_value);
 }
 
 
