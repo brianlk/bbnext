@@ -11,7 +11,7 @@
 #include "stdlib.h"
 #include "struct_to_json.h"
 
-// object counter
+/* object counter */
 int counter = 0;
 
 void StructToJSON_constructor(StructToJSON *self, char *key_and_value) {
@@ -26,9 +26,9 @@ void StructToJSON_constructor(StructToJSON *self, char *key_and_value) {
 void iterate_queue_render_json(StructToJSON **sj_queue) {
   printf("%s", "{");
   for (int i=0; i<counter; i++) {
-    // print the objects in queue
+    /* print the objects in queue */
     printf("\"%s\":\"%s\",", (sj_queue[i])->key, (sj_queue[i])->value);
-    // release the previous allocated address
+    /* release the previous allocated address */
     free(sj_queue[i]);
   }
   printf("%s", "}");

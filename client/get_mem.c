@@ -16,7 +16,7 @@
 #define BUFFERSIZE 64
 
 char defined_metrics[][5] = {
-  {0x4d, 0x65, 0x6d, 0x54, 0x6f}, // MemTo
+  {0x4d, 0x65, 0x6d, 0x54, 0x6f}, /* MemTo */
 };
 
 #define QUEUE_SIZE (sizeof(defined_metrics)/sizeof(defined_metrics[0]))
@@ -25,15 +25,18 @@ StructToJSON *sj_queue[QUEUE_SIZE];
 
 
 bool add_key_value_into_queue(char *key_and_value) {
-  // assign the address to array of pointer
-  // using global variable in struct_to_json.h
+  /*
+  * assign the address to array of pointer (struct) 
+  * using global variable counter to count the objects 
+  * in struct_to_json.h
+  */
   sj_queue[counter] = malloc(sizeof(struct StructToJSON));
   StructToJSON_constructor(sj_queue[counter], key_and_value);
-  // increment the counter. Next round, work on the next item in sj_queue 
+  /* increment the counter. Next round, work on the next item in sj_queue */
   counter++;
 }
 
-bool match_regex(char *str, const char * pattern) {
+bool match_regex(char *str, const char *pattern) {
   regex_t regex;
 
   int reg_comp = regcomp(&regex, pattern, REG_EXTENDED);
@@ -48,22 +51,22 @@ bool match_regex(char *str, const char * pattern) {
   return false;
 } 
 
-char* extact_key_value(char *str) {
-  // Split the string into tokens
+char *extact_key_value(char *str) {
+  /* Split the string into tokens */
   char *delimiter = " ";
   char *token;
 
   token = strtok(str, delimiter);
   char *temp;
-  // match the metrics key
+  /* match the metrics key */
   if (match_regex(token, "([a-zA-Z]+):")) {
     temp = token;
   }
   while (token != NULL) {
-    // match the metrics value
+    /* match the metrics value */
     if (match_regex(token, "[0-9]+")) {
       char *key_and_value = strcat(temp, token);
-      // process key:value
+      /* process string key:value */
       add_key_value_into_queue(key_and_value);
     }
     token = strtok(NULL, delimiter);
@@ -73,17 +76,17 @@ char* extact_key_value(char *str) {
 bool get_defined_items(FILE *fp) {
   char buffer[BUFFERSIZE];
 
-  // Read the file until eof
+  /* Read the file until eof */
   while (!feof(fp)) {
     fgets(buffer, BUFFERSIZE, fp);
     if (buffer == NULL)
       return false;
-    // loop the metrics array and get the metrics
+    /* loop the metrics array and get the metrics if matched*/
     char *buffer_substr = strndup(buffer, 5);
     int array_size = sizeof(defined_metrics)/sizeof(defined_metrics[0]);
     for (int i=0; i<array_size; i++) {
       if (strcmp(buffer_substr, defined_metrics[i]) == 0){
-        // extract the value of each memory items
+        /* extract the value of each memory items */
         extact_key_value(buffer);
       }
     }
@@ -94,7 +97,7 @@ bool get_defined_items(FILE *fp) {
 int main() {
 
   FILE *fp;
-  // open "/proc/meminfo"
+  /* open "/proc/meminfo" */
   fp = fopen(MEMINFO, "r");
   if (fp == NULL) {
     puts("Error: Can't open the file!");
@@ -105,7 +108,7 @@ int main() {
     exit(EXIT_FAILURE);
   }
   fclose(fp);
-  // iterate the queue sj_queue
+  /* iterate the struct queue sj_queue */
   iterate_queue_render_json(sj_queue);
 
   return EXIT_SUCCESS;
