@@ -30,7 +30,7 @@ const char *defined_metrics[] = {
 StructToJSON *sj_queue[QUEUE_SIZE];
 
 
-bool process_key_and_value(char *key_and_value) {
+bool add_key_value_into_queue(char *key_and_value) {
   // assign the address to array of pointer
   // using global variable in struct_to_json.h
   sj_queue[counter] = malloc(sizeof(struct StructToJSON));
@@ -70,7 +70,7 @@ char* extact_key_value(char *str) {
     if (match_regex(token, "[0-9]+")) {
       char *key_and_value = strcat(temp, token);
       // process key:value
-      process_key_and_value(key_and_value);
+      add_key_value_into_queue(key_and_value);
     }
     token = strtok(NULL, delimiter);
   }
