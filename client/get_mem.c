@@ -100,7 +100,6 @@ bool get_defined_items(FILE *fp) {
 int main() {
 
   FILE *fp;
-  // sj_queue = (StructToJSON*) malloc(10 * sizeof(struct StructToJSON));
   // open "/proc/meminfo"
   fp = fopen(MEMINFO, "r");
   if (fp == NULL) {
@@ -112,7 +111,7 @@ int main() {
     exit(EXIT_FAILURE);
   }
   fclose(fp);
-
+  // iterate the queue sj_queue
   iterate_queue(sj_queue);
 
   return EXIT_SUCCESS;
