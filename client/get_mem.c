@@ -111,5 +111,9 @@ int main() {
   /* iterate the struct queue sj_queue */
   iterate_queue_render_json(sj_queue);
 
+/*
+  struct Map m1 = {"memory", sj_queue};
+  struct Map ma1[] = {{"memory", sj_queue}, {"cpu", sj_queue}};
+*/
   return EXIT_SUCCESS;
 }

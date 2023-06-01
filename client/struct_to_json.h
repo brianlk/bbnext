@@ -19,7 +19,7 @@ struct StructToJSON {
 
 struct Map {
   char resource[10];
-  struct StructToJSON data[]; 
+  struct StructToJSON **data; 
 };
 
 typedef struct StructToJSON StructToJSON;
