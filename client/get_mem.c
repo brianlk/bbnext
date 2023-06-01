@@ -112,7 +112,7 @@ int main() {
   }
   fclose(fp);
   // iterate the queue sj_queue
-  iterate_queue(sj_queue);
+  iterate_queue_render_json(sj_queue);
 
   return EXIT_SUCCESS;
 }

@@ -20,6 +20,6 @@ typedef struct StructToJSON StructToJSON;
 
 void StructToJSON_constructor(StructToJSON * const self, char *key_and_value);
 
-void iterate_queue(StructToJSON **sj_queue);
+void iterate_queue_render_json(StructToJSON **sj_queue);
 
 #endif
