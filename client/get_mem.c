@@ -113,13 +113,7 @@ int main() {
   }
   fclose(fp);
 
-  for (int i=0; i<counter; i++) {
-    // print the objects in queue
-    printf("%s => %s\n", (sj_queue[i])->key, (sj_queue[i])->value);
-    // release the previous allocated address
-    free(sj_queue[i]);
-  }
-
+  iterate_queue(sj_queue);
 
   return EXIT_SUCCESS;
 }

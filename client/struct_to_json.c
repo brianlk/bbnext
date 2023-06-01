@@ -23,3 +23,12 @@ void StructToJSON_constructor(StructToJSON * const self, char *key_and_value) {
 
 }
 
+void iterate_queue(StructToJSON **sj_queue) {
+  for (int i=0; i<counter; i++) {
+    // print the objects in queue
+    printf("%s => %s\n", (sj_queue[i])->key, (sj_queue[i])->value);
+    // release the previous allocated address
+    free(sj_queue[i]);
+  }
+}
+
