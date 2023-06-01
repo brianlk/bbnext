@@ -15,14 +15,8 @@
 #define MEMINFO "/proc/meminfo"
 #define BUFFERSIZE 64
 
-const char *defined_metrics[] = {
-  "MemTo",
-  "MemFr",
-  "MemAv",
-  "SwapT",
-  "SwapF",
-  "Cache",
-  "Hugep"
+char defined_metrics[][5] = {
+  {0x4d, 0x65, 0x6d, 0x54, 0x6f}, // MemTo
 };
 
 #define QUEUE_SIZE (sizeof(defined_metrics)/sizeof(defined_metrics[0]))
