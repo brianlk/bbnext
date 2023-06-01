@@ -25,8 +25,9 @@ const char *defined_metrics[] = {
   "Hugep"
 };
 
+#define QUEUE_SIZE (sizeof(defined_metrics)/sizeof(defined_metrics[0]))
 
-StructToJSON *sj_queue[10];
+StructToJSON *sj_queue[QUEUE_SIZE];
 
 
 bool process_key_and_value(char *key_and_value) {
