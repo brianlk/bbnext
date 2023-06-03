@@ -23,6 +23,7 @@ struct Map {
 };
 
 typedef struct StructToJSON StructToJSON;
+typedef struct Map Map;
 
 void StructToJSON_constructor(StructToJSON *self, char *key_and_value);
 
