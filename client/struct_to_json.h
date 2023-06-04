@@ -16,15 +16,17 @@ struct StructToJSON {
   char key[100];
   char value[100];
 };
-typedef struct StructToJSON StructToJSON; /* define StructToJSON type */
+/* define StructToJSON type */
+typedef struct StructToJSON StructToJSON; 
 
 struct Map {
   char resource[10];
   struct StructToJSON **data; 
 };
-typedef struct Map Map; /* define Map type */
+/* define Map type */
+typedef struct Map Map;
 
-
+/* StructToJSON class constructor */
 void StructToJSON_constructor(StructToJSON *self, char *key_and_value);
 
 void iterate_queue_render_json(StructToJSON **sj_queue);
