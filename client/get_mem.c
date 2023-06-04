@@ -84,8 +84,8 @@ bool get_defined_items(FILE *fp) {
       return false;
     /* loop the metrics array and get the metrics if matched*/
     char *buffer_substr = strndup(buffer, 5);
-    int array_size = sizeof(defined_metrics)/sizeof(defined_metrics[0]);
-    for (int i=0; i<array_size; i++) {
+    // int array_size = sizeof(defined_metrics)/sizeof(defined_metrics[0]);
+    for (int i=0; i < QUEUE_SIZE; i++) {
       if (strcmp(buffer_substr, defined_metrics[i]) == 0){
         /* extract the value of each memory items */
         extact_key_value(buffer);
