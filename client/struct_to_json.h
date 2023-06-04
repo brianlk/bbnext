@@ -16,14 +16,14 @@ struct StructToJSON {
   char key[100];
   char value[100];
 };
+typedef struct StructToJSON StructToJSON; /* define StructToJSON type */
 
 struct Map {
   char resource[10];
   struct StructToJSON **data; 
 };
+typedef struct Map Map; /* define Map type */
 
-typedef struct StructToJSON StructToJSON;
-typedef struct Map Map;
 
 void StructToJSON_constructor(StructToJSON *self, char *key_and_value);
 
