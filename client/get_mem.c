@@ -22,6 +22,7 @@ char *defined_metrics[] = {
 
 #define QUEUE_SIZE (sizeof(defined_metrics)/sizeof(defined_metrics[0]))
 
+/* pointer array of object StructToJSON */
 StructToJSON *sj_queue[QUEUE_SIZE];
 
 
@@ -31,7 +32,7 @@ bool add_key_value_into_queue(char *key_and_value) {
   * using global variable counter to count the objects 
   * in struct_to_json.h
   */
-  sj_queue[counter] = malloc(sizeof(struct StructToJSON));
+  sj_queue[counter] = malloc(sizeof(StructToJSON));
   StructToJSON_constructor(sj_queue[counter], key_and_value);
   /* increment the counter. Next round, work on the next item in sj_queue */
   counter++;
