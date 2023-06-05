@@ -11,6 +11,7 @@
 #include "stdbool.h"
 #include "regex.h"
 #include "struct_to_json.h"
+#include "time.h"
 
 #define MEMINFO "/proc/meminfo"
 #define BUFFERSIZE 64
@@ -112,7 +113,9 @@ int main() {
     exit(EXIT_FAILURE);
   }
   fclose(fp);
-  add_key_value_into_queue("timestamp:123");
+  char timestamp[50];
+  sprintf(timestamp, "timestamp:%lu", (unsigned long)time(NULL));
+  add_key_value_into_queue(timestamp);
   /* iterate the struct queue sj_queue */
   iterate_queue_render_json(sj_queue);
 
