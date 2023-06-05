@@ -21,7 +21,7 @@ typedef struct StructToJSON StructToJSON;
 
 struct Map {
   char resource[10];
-  struct StructToJSON **data; 
+  StructToJSON **data; 
 };
 /* define Map type */
 typedef struct Map Map;

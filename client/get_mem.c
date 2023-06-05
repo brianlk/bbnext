@@ -17,7 +17,7 @@
 
 char *defined_metrics[] = {
   // {0x4d, 0x65, 0x6d, 0x54, 0x6f}, /* MemTo */
-  "MemTo", "SwapF", "MemFr", "MemAv", "Cache", "SwapT", "SwapF"
+  "MemTo", "SwapF", "MemFr", "MemAv", "Cache", "SwapT"
 };
 
 #define QUEUE_SIZE (sizeof(defined_metrics)/sizeof(defined_metrics[0]))

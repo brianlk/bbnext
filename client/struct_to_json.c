@@ -24,13 +24,25 @@ void StructToJSON_constructor(StructToJSON *self, char *key_and_value) {
 }
 
 void iterate_queue_render_json(StructToJSON **sj_queue) {
-  printf("%s", "{");
+  char *str_format;
+  Map *map1;
+  
+  map1 = malloc(sizeof(Map));
+  strcpy(map1->resource, "memory");
+  map1->data = sj_queue;
+
+  /* iterate the queue and print the json */
+  printf("%s \"%s\":{", "{", map1->resource);
   for (int i=0; i<counter; i++) {
-    /* print the objects in queue */
-    printf("\"%s\":\"%s\",", (sj_queue[i])->key, (sj_queue[i])->value);
+    if (i == counter - 1) {
+      str_format = "\"%s\":\"%s\"";
+    } else {
+      str_format = "\"%s\":\"%s\",";
+    }
+    printf(str_format, (map1->data[i])->key, (map1->data[i])->value);
     /* release the previous allocated address */
     free(sj_queue[i]);
   }
-  printf("%s", "}");
+  printf("%s%s", "}", "}");
 }
 
