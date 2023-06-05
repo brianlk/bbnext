@@ -22,8 +22,10 @@ char *defined_metrics[] = {
 
 #define QUEUE_SIZE (sizeof(defined_metrics)/sizeof(defined_metrics[0]))
 
-/* pointer array of object StructToJSON */
-StructToJSON *sj_queue[QUEUE_SIZE];
+/* pointer array of object StructToJSON
+* QUEUE_SIZE + 1 includes timestamp in the queue
+*/
+StructToJSON *sj_queue[QUEUE_SIZE+1];
 
 
 bool add_key_value_into_queue(char *key_and_value) {
@@ -32,7 +34,7 @@ bool add_key_value_into_queue(char *key_and_value) {
   * using global variable counter to count the objects 
   * in struct_to_json.h
   */
-  sj_queue[counter] = malloc(sizeof(StructToJSON));
+  sj_queue[counter] = (StructToJSON *)malloc(sizeof(StructToJSON));
   StructToJSON_constructor(sj_queue[counter], key_and_value);
   /* increment the counter. Next round, work on the next item in sj_queue */
   counter++;
@@ -110,6 +112,7 @@ int main() {
     exit(EXIT_FAILURE);
   }
   fclose(fp);
+  add_key_value_into_queue("timestamp:123");
   /* iterate the struct queue sj_queue */
   iterate_queue_render_json(sj_queue);
 

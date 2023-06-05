@@ -15,12 +15,10 @@
 int counter = 0;
 
 void StructToJSON_constructor(StructToJSON *self, char *key_and_value) {
-  
-  char *key = strtok(key_and_value, ":");
-  strcpy(self->key, key);
-  char *value = strtok(NULL, ":");
-  strcpy(self->value, value);
-
+  char temp[200];
+  strcpy(temp, key_and_value);
+  strcpy(self->key, strtok(temp, ":"));
+  strcpy(self->value, strtok(NULL, ":"));
 }
 
 void iterate_queue_render_json(StructToJSON **sj_queue) {
