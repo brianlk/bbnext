@@ -3,6 +3,8 @@
 {% block content %}
 <div class="container">
     <h1>i am okay</h1>
-    <h2>{{ arr[0] }}</h2>
+    {% for x in hosts %}
+        <h2>{{ x }}</h2>
+    {% endfor %}
 </div>
 {% endblock %}

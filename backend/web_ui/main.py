@@ -1,4 +1,4 @@
-from engines.read import items
+from engines.read import hosts
 
 from flask import Flask, request, render_template
 from flask_bootstrap import Bootstrap
@@ -8,9 +8,7 @@ bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
-    a = [1,2,3]
-    print(request.path)
-    return render_template('index.html', arr=a, request=request)
+    return render_template('index.html', hosts=hosts(), request=request)
 
 
 @app.route('/host/<host_id>')
