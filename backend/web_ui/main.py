@@ -14,3 +14,13 @@ def index():
 @app.route('/host/<host_id>')
 def host(host_id):
     return "<h1>under construction</h1>"
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template('500.html'), 500
