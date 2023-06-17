@@ -1,10 +1,15 @@
 from engines.read import items
 
+from flask import Flask, request, render_template
 
-from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    print(items())
-    return "<h1>i am ok</h1>"
+    a = [1,2,3]
+    return render_template('index.html', arr=a)
+
+
+@app.route('/host/<host_id>')
+def host(host_id):
+    return "<h1>under construction</h1>"
