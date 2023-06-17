@@ -1,0 +1,5 @@
+[
+{"hostname":"host1","ping":"1"},
+{"hostname":"host2","ping":"0"},
+{"hostname":"host3","ping":"1"}
+]
