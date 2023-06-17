@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="container">
-    <h1>i am okay</h1>
+    <h1>Hosts</h1>
     {% for x in hosts %}
-        <h2>{{ x }}</h2>
+        <h2>{{ x["hostname"] }}</h2>
     {% endfor %}
 </div>
 {% endblock %}
