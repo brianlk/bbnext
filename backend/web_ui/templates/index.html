@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Hosts</h1>
     {% for x in hosts %}
-        <h2>{{ x["hostname"] }}</h2>
+        <div><a href=/host/{{ x["hostname"] }}>{{ x["hostname"] }}</a></div>
     {% endfor %}
 </div>
 {% endblock %}
