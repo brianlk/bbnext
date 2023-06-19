@@ -16,8 +16,6 @@ class BackgroundTasks(threading.Thread):
                 store[0]["memory"] = random.randint(0,1)
             else:
                 store.append({"hostname":"host1", "cpu":1, "memory":1})
-                
-            print(store)
-            time.sleep(5)
+            time.sleep(2)
 
 

@@ -2,6 +2,27 @@
 
 {% block title %} BBNext - {{ request.endpoint }} {% endblock %}
 
+{% block metas %}
+  {{super()}}
+  <meta http-equiv="refresh" content="10">
+  <style>
+    .dot {
+      height: 10px;
+      width: 10px;
+      background-color: green;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot2 {
+      height: 10px;
+      width: 10px;
+      background-color: red;
+      border-radius: 50%;
+      display: inline-block;
+    }
+  </style>
+{% endblock %}
+
 {% block navbar %}
 <nav class="navbar navbar-default">
     <div class="container-fluid">

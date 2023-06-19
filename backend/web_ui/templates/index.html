@@ -12,8 +12,16 @@
     {% for x in hosts %}
         <tr>
             <td>{{ x["hostname"] }}</td>
-            <td>{{ x["cpu"] }}</td>
-            <td>{{ x["memory"] }}</td>
+            {% if x["cpu"] == 1 %}
+            <td><span class="dot"></span></td>
+            {% else %}
+            <td><span class="dot2"></span></td>
+            {% endif %}
+            {% if x["memory"] == 1 %}
+            <td><span class="dot"></span></td>
+            {% else %}
+            <td><span class="dot2"></span></td>
+            {% endif %}
         </tr>
     {% endfor %}
     </table>
