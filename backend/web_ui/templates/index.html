@@ -3,8 +3,19 @@
 {% block content %}
 <div class="container">
     <h1>Hosts</h1>
+    <table class="table">
+        <tr>
+            <th>hostname</th>
+            <th>cpu</th>
+            <th>memory</th>
+        </tr>
     {% for x in hosts %}
-        <div><a href=/host/{{ x["hostname"] }}>{{ x["hostname"] }}</a></div>
+        <tr>
+            <td>{{ x["hostname"] }}</td>
+            <td>{{ x["cpu"] }}</td>
+            <td>{{ x["memory"] }}</td>
+        </tr>
     {% endfor %}
+    </table>
 </div>
 {% endblock %}
