@@ -1,13 +1,14 @@
 import json
-from db.store import store
+from db.store import store, BackgroundTasks, xxx
 
 def hosts():
-    hosts = [
-        {"hostname":"host1", "cpu":1, "memory":1},
-        {"hostname":"host2", "cpu":0, "memory":0},
-    ]
+    # global store
+    global bt
+    if not bt:
+        bt = BackgroundTasks()
+        bt.start()
     global store
-    return hosts
+    return store
     
 def add_host():
     x = {"hostname":"host1", "cpu":1, "memory":1}
