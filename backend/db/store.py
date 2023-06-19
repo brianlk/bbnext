@@ -1,9 +1,14 @@
 import random
 import threading
 import time
+import json
+import os
 
 # Store the host's metrics
-store = []
+class GObject:
+    store = []
+    
+g = GObject()
 
 # Background task
 bt = None
@@ -11,11 +16,16 @@ bt = None
 class BackgroundTasks(threading.Thread):
     def run(self,*args,**kwargs):
         while True:
-            if len(store) > 0:
-                store[0]["cpu"] = random.randint(0,1)
-                store[0]["memory"] = random.randint(0,1)
-            else:
-                store.append({"hostname":"host1", "cpu":1, "memory":1})
+            global g
+            # Clear the global list
+            g.store.clear()
+            g.store = open_json()
             time.sleep(2)
 
 
+
+def open_json():
+    with open(os.path.dirname(__file__) + "/db.json") as f:
+        data = json.load(f)
+        
+    return data
