@@ -1,4 +1,4 @@
-from engines.read import hosts
+from engines.hosts import hosts, add_host
 
 from flask import Flask, request, render_template
 from flask_bootstrap import Bootstrap
@@ -8,8 +8,16 @@ bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html', hosts=hosts(), request=request)
+    xxx = hosts()
+    if len(xxx) > 0:
+        return render_template('index.html', hosts=xxx, request=request)
+    return "<h1>No hosts</h1>"
 
+@app.route('/add')
+def add():
+    add_host()
+    return '<h1>aaa</h1>'
+    
 
 @app.route('/host/<host_id>')
 def host(host_id):
