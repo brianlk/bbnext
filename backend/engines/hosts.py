@@ -8,7 +8,6 @@ def hosts():
         bt = BackgroundTasks()
         bt.start()
     global g
-    print(g.store)
     return g.store
     
 def add_host():
