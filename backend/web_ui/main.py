@@ -9,6 +9,7 @@ import datetime
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    res_hosts = []
     # get the current date and time
     now = datetime.datetime.now()
     hosts_states = get_hosts()
@@ -16,11 +17,13 @@ def index():
     form = NameForm()
     if form.validate_on_submit():
         name = form.name.data
-    print("=============")
-    print(name)
-    if len(hosts_states) > 0:
-        return render_template('index.html', hosts=hosts_states, now=now, 
-                               request=request, form=form)
+    if name != None:
+        res_hosts = [ v for v in hosts_states if v["hostname"] == name ]
+    else:
+        res_hosts = hosts_states
+    if len(res_hosts) > 0:
+        return render_template('index.html', hosts=res_hosts, now=now, request=request, 
+                               form=form)
     return render_template('no_host.html')
 
 @app.route('/host/<host_id>')
