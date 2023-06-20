@@ -2,13 +2,14 @@
 
 {% block content %}
 <div class="container">
-    <h1>Hosts</h1>
+    <h2>Hosts</h2>
+    <p>last update at {{ now }}</p>
     <table class="table">
         <tr>
             <th>hostname</th>
             <th>cpu</th>
             <th>memory</th>
-        </tr>    
+        </tr>  
     {% for x in hosts %}
         <tr>
             <td>{{ x["hostname"] }}</td>

@@ -3,14 +3,19 @@ from engines.hosts import hosts
 from flask import Flask, request, render_template
 from flask_bootstrap import Bootstrap
 
+import datetime
+
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
-    xxx = hosts()
-    if len(xxx) > 0:
-        return render_template('index.html', hosts=xxx, request=request)
+    # get the current date and time
+    now = datetime.datetime.now()
+    hosts_states = hosts()
+    if len(hosts_states) > 0:
+        return render_template('index.html', hosts=hosts_states, now=now, 
+                               request=request)
     return render_template('no_host.html')
 
 @app.route('/host/<host_id>')
