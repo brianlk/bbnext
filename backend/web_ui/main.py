@@ -1,4 +1,4 @@
-from engines.hosts import hosts
+from engines.hosts import get_hosts
 from engines.forms import NameForm
 from web_ui.app_config import app
 
@@ -7,13 +7,17 @@ from flask import request, render_template
 import datetime
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     # get the current date and time
     now = datetime.datetime.now()
-    hosts_states = hosts()
+    hosts_states = get_hosts()
     name = None
     form = NameForm()
+    if form.validate_on_submit():
+        name = form.name.data
+    print("=============")
+    print(name)
     if len(hosts_states) > 0:
         return render_template('index.html', hosts=hosts_states, now=now, 
                                request=request, form=form)

@@ -1,7 +1,8 @@
 import json
+import random
 from db.store import g, BackgroundTasks, bt, open_json
 
-def hosts():
+def get_hosts():
     # global store
     global bt
     if not bt:
