@@ -8,7 +8,7 @@ import os
 class GObject:
     store = []
     
-g = GObject()
+global_object = GObject()
 
 # Background task
 bt = None
@@ -16,12 +16,11 @@ bt = None
 class BackgroundTasks(threading.Thread):
     def run(self,*args,**kwargs):
         while True:
-            global g
+            global global_object
             # Clear the global list
-            g.store.clear()
-            g.store = open_json()
+            global_object.store.clear()
+            global_object.store = open_json()
             time.sleep(2)
-
 
 
 def open_json():
