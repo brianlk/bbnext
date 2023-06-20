@@ -9,8 +9,4 @@ def hosts():
         bt.start()
     global g
     return g.store
-    
-def add_host():
-    x = {"hostname":"host1", "cpu":1, "memory":1}
-    global store
-    store.append(x)
+
