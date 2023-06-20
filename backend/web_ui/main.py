@@ -13,11 +13,9 @@ def index():
     # get the current date and time
     now = datetime.datetime.now()
     hosts_states = get_hosts()
-    name = None
     form = NameForm()
-    if form.validate_on_submit():
+    if request.method == "POST":
         name = form.name.data
-    if name != None:
         res_hosts = [ v for v in hosts_states if v["hostname"] == name ]
     else:
         res_hosts = hosts_states

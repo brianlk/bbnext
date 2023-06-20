@@ -1,5 +1,10 @@
 {% extends "default.html" %}
 
+{% block head %}
+    {{ super()}}
+    <meta http-equiv="refresh" content="60">
+{% endblock %}
+
 {% import "bootstrap/wtf.html" as wtf %}
 
 
@@ -29,6 +34,11 @@
         </tr>
     {% endfor %}
     </table>
-    <div><div><a href="/">Back to home</a></div><div style="width:120px; float: right">{{ wtf.quick_form(form) }}</div></div>
+    <div>
+        <div><a href="/">Back to home</a></div>
+        {% if not form.name.data %}
+            <div style="width:120px; float: right">{{ wtf.quick_form(form) }}</div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
