@@ -11,7 +11,7 @@ runtime_env = os.getenv('FLASK_RUNTIME_ENV')
 
 import sqlalchemy as db
 if runtime_env == "DEV":
-    DBNAME = 'db/abcd.sqlite'
+    DBNAME = f'db/{runtime_env}.sqlite'
 elif runtime_env == "PROD":
     pass
 

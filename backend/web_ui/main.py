@@ -1,6 +1,7 @@
 from engines.hosts import get_hosts
 from engines.forms import NameForm
 from web_ui.app_config import app
+from utils.tools import match_regex
 
 from flask import request, render_template
 
@@ -16,13 +17,14 @@ def index():
     form = NameForm()
     if request.method == "POST":
         name = form.name.data
-        res_hosts = [ v for v in hosts_states if v["hostname"] == name ]
+        res_hosts = [ v for v in hosts_states if match_regex(name, v["hostname"]) ]
     else:
         res_hosts = hosts_states
     if len(res_hosts) > 0:
         return render_template('index.html', hosts=res_hosts, now=now, request=request, 
                                form=form)
     return render_template('no_host.html')
+
 
 @app.route('/host/<host_id>')
 def host(host_id):
