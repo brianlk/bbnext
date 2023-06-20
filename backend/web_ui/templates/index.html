@@ -1,5 +1,8 @@
 {% extends "default.html" %}
 
+{% import "bootstrap/wtf.html" as wtf %}
+
+
 {% block content %}
 <div class="container">
     <h2>Hosts</h2>
@@ -26,5 +29,6 @@
         </tr>
     {% endfor %}
     </table>
+    <div style="width:120px; float: right">{{ wtf.quick_form(form) }}</div>
 </div>
 {% endblock %}

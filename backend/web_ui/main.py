@@ -1,21 +1,22 @@
 from engines.hosts import hosts
+from engines.forms import NameForm
+from web_ui.app_config import app
 
-from flask import Flask, request, render_template
-from flask_bootstrap import Bootstrap
+from flask import request, render_template
 
 import datetime
 
-app = Flask(__name__)
-bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
     # get the current date and time
     now = datetime.datetime.now()
     hosts_states = hosts()
+    name = None
+    form = NameForm()
     if len(hosts_states) > 0:
         return render_template('index.html', hosts=hosts_states, now=now, 
-                               request=request)
+                               request=request, form=form)
     return render_template('no_host.html')
 
 @app.route('/host/<host_id>')
