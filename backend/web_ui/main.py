@@ -1,5 +1,5 @@
 from engines.hosts import get_hosts
-from engines.forms import NameForm
+from engines.forms import SearchForm
 from web_ui.app_config import app
 from utils.tools import match_regex
 
@@ -14,7 +14,7 @@ def index():
     # get the current date and time
     now = datetime.datetime.now()
     hosts_states = get_hosts()
-    form = NameForm()
+    form = SearchForm()
     if request.method == "POST":
         name = form.name.data
         res_hosts = [ v for v in hosts_states if match_regex(name, v["hostname"]) ]
