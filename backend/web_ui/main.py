@@ -4,6 +4,7 @@ from web_ui.app_config import app, session
 from engines.hosts import get_hosts
 from engines.forms import SearchForm
 from utils.tools import match_regex
+from db.models import Host, CPUThreshold, MEMThreshold
 
 from flask import request, render_template
 
@@ -30,6 +31,16 @@ def index():
 
 @app.route('/host/<host_id>')
 def host(host_id):
+    c = CPUThreshold(cpu_threshold=20)
+    m = MEMThreshold(mem_threshold=10)
+    h = Host(hostname="host11", cputhreshold=[c], memthreshold=[m])
+    try:
+        session.add(c)
+        session.add(m)
+        session.add(h)
+        session.commit()
+    except:
+        print("Exception is shown.")
     return "<h1>under construction</h1>"
 
 
