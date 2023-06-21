@@ -1,10 +1,28 @@
-from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, String, Integer
+from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import Column, String, Integer, ForeignKey, Index
 
 Base = declarative_base()
 
-class Student(Base):
-    __tablename__ = 'students'
+class Host(Base):
+    __tablename__ = 'host'
+    __tableargs__ = (
+        Index('host_hostname_idx', 'hostname')
+    )
     id = Column(Integer(), auto_increment=True, primary_key=True)
-    name = Column(String(), nullable=False)
+    hostname = Column(String(), unique=True, nullable=False)
+    cputhreshold = relationship('CPUThreshold', backref='host', lazy='dynamic')
+    memthreshold = relationship('MEMThreshold', backref='host', lazy='dynamic')
     
+class CPUThreshold(Base):
+    __tablename__ = 'cputhreshold'
+    id = Column(Integer(), auto_increment=True, primary_key=True)
+    cpu_threshold = Column(Integer(), nullable=False)
+    host_id = Column(Integer(), ForeignKey('host.id'), nullable=False)
+
+
+class MEMThreshold(Base):
+    __tablename__ = 'memthreshold'
+    id = Column(Integer(), auto_increment=True, primary_key=True)
+    mem_threshold = Column(Integer(), nullable=False)
+    host_id = Column(Integer(), ForeignKey('host.id'), nullable=False)
+
