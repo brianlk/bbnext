@@ -3,6 +3,8 @@ Monitoring tool Big Brother next generation
 
 The project is successor of Big Brother monitoring tool https://en.wikipedia.org/wiki/Big_Brother_(software) and the remembrance  of my career. The client will generate a json out and push the json to the REST API server. The stored statistics will be used to generate a performance dashboard.
 
+Start command: docker run -d -e FLASK_RUNTIME_ENV='DEV' -p 5000:5000 docker-name
+
 Ideal client JSON output:
 ```json
 {
