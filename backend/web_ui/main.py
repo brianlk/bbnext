@@ -1,6 +1,8 @@
+# Import app config
+from web_ui.app_config import app, session
+
 from engines.hosts import get_hosts
 from engines.forms import SearchForm
-from web_ui.app_config import app, session
 from db.models import Student
 from utils.tools import match_regex
 
