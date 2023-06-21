@@ -1,6 +1,7 @@
 from engines.hosts import get_hosts
 from engines.forms import SearchForm
-from web_ui.app_config import app
+from web_ui.app_config import app, session
+from db.models import Student
 from utils.tools import match_regex
 
 from flask import request, render_template
@@ -28,6 +29,9 @@ def index():
 
 @app.route('/host/<host_id>')
 def host(host_id):
+    # new_student = Student(id=10, name="ccccc")
+    # session.add(new_student)
+    # session.commit()
     return "<h1>under construction</h1>"
 
 

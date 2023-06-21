@@ -9,11 +9,16 @@ bootstrap = Bootstrap(app)
 
 runtime_env = os.getenv('FLASK_RUNTIME_ENV')
 
-import sqlalchemy as db
-if runtime_env == "DEV":
-    DBNAME = f'db/{runtime_env}.sqlite'
-elif runtime_env == "PROD":
-    pass
 
-engine = db.create_engine(f'sqlite:///{DBNAME}')
-connection = engine.connect()
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from db.models import Base
+
+database_dir = f"{os.path.abspath(os.path.dirname(__file__))}/../db/"
+database_uri = f'sqlite:///{database_dir}/{runtime_env}.sqlite3'
+
+Session = sessionmaker()
+
+engine = create_engine(database_uri)
+session = Session(bind=engine)
+Base.metadata.create_all(engine)
