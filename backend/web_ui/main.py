@@ -3,7 +3,7 @@ from web_ui.app_config import app, session
 
 from engines.hosts import get_hosts, add_host
 from engines.forms import SearchForm
-from utils.tools import match_regex
+from utils.tools import match_regex, print_exception
 
 
 from flask import request, render_template, abort
@@ -36,8 +36,8 @@ def host(hostname):
         add_host(hostname, res_dict)
         return "i am ok", 200
     except Exception as e:
-        print(repr(e))
-        abort(500)
+        print_exception(request.path, repr(e))
+        return render_template('500.html'), 500
 
 
 @app.errorhandler(404)
