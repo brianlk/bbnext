@@ -10,8 +10,8 @@ class Host(Base):
     )
     id = Column(Integer(), auto_increment=True, primary_key=True)
     hostname = Column(String(), unique=True, nullable=False)
-    cputhreshold = relationship('CPUThreshold', backref='host', lazy='dynamic')
-    memthreshold = relationship('MEMThreshold', backref='host', lazy='dynamic')
+    cpu_threshold = relationship('CPUThreshold', backref='host', lazy='dynamic')
+    mem_threshold = relationship('MEMThreshold', backref='host', lazy='dynamic')
     
 class CPUThreshold(Base):
     __tablename__ = 'cputhreshold'
