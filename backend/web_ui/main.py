@@ -1,10 +1,10 @@
 # Import app config
 from web_ui.app_config import app, session
 
-from engines.hosts import get_hosts
+from engines.hosts import get_hosts, add_host
 from engines.forms import SearchForm
 from utils.tools import match_regex
-from db.models import Host, CPUThreshold, MEMThreshold
+
 
 from flask import request, render_template, abort
 
@@ -33,16 +33,11 @@ def index():
 def host(hostname):
     try:
         res_dict = request.get_json()
-        cpu_t = CPUThreshold(cpu_threshold=res_dict["cpu_threshold"])
-        mem_t = MEMThreshold(mem_threshold=res_dict["mem_threshold"])
-        host = Host(hostname=hostname, cpu_threshold=[c], mem_threshold=[m])
-        session.add(host)
-        session.commit()
+        add_host(hostname, res_dict)
+        return "i am ok", 200
     except Exception as e:
-        session.rollback()
-        print("Exception occurred for value: "+ repr(e))
+        print(repr(e))
         abort(500)
-    return "<h1>ok</h1>"
 
 
 @app.errorhandler(404)
